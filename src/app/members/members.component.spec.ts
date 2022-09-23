@@ -4,7 +4,7 @@ import { MembersComponent } from './members.component';
 
 describe('MembersComponent', () => {
   let component: MembersComponent;
-  let fixture: ComponentFixture<MembersComponent>;
+  let fixture:   ComponentFixture<MembersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('MembersComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MembersComponent);
+    fixture   = TestBed.createComponent(MembersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
