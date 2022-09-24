@@ -4,7 +4,7 @@ import { MemberDetailComponent } from './member-detail.component';
 
 describe('MemberDetailComponent', () => {
   let component: MemberDetailComponent;
-  let fixture: ComponentFixture<MemberDetailComponent>;
+  let fixture:   ComponentFixture<MemberDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('MemberDetailComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MemberDetailComponent);
+    fixture   = TestBed.createComponent(MemberDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
