@@ -2,5 +2,6 @@
 <div *ngIf="messageService.messages.length">
   <h2>メッセージログ</h2>
   <button class="clear" (click)="messageService.clear()">クリア</button>
+  <!-- message配列をすべて表示する -->
   <div *ngFor="let message of messageService.messages">{{ message }}</div>
 </div>
