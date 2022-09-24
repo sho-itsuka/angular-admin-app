@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable }     from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { Member }  from './member';
 import { MEMBERS } from './mock-members';
@@ -10,7 +11,7 @@ export class MemberService {
 
   constructor() { }
 
-  getMembers(): Member[] {
-    return MEMBERS
+  getMembers(): Observable<Member[]> {
+    return of(MEMBERS)
   }
 }
