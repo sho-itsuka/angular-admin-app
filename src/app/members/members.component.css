@@ -34,18 +34,6 @@
   color: #607D8B;
 }
 
-/* selectedクラスが付与されたらCSSが充てられる */
-.members li.selected {
-  background-color: #CFD8DC;
-  color: white;
-}
-
-/* selectedクラスが付与されたらCSSが充てられる */
-.members li.selected:hover {
-  background-color: #BBD8DC;
-  color: white;
-}
-
 .members .badge {
   display: inline-block;
   font-size: small;
