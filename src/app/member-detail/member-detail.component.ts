@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute }           from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Member } from '../member';
+import { Member }        from '../member';
 import { MemberService } from '../member.service';
 
 @Component({
@@ -27,5 +27,9 @@ export class MemberDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id')! // 後ろに ! をつけてエラー解消(Object is possibly 'null'.)
     this.memberService.getMember(id)
       .subscribe(member => this.member = member)
+  }
+
+  goBack(): void {
+    this.location.back()
   }
 }
