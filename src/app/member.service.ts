@@ -1,4 +1,5 @@
 import { Injectable }     from '@angular/core';
+import { HttpClient }     from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { Member }         from './member';
@@ -9,8 +10,12 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class MemberService {
+
   // memberServiceの中でmessageServiceが使えるようにDIする
-  constructor(private messageService: MessageService) { } 
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) { } 
 
   // メッセージを追加する
   getMembers(): Observable<Member[]> {
