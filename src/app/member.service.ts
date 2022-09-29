@@ -10,22 +10,24 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class MemberService {
+  private membersUrl = 'api/members'
 
-  // memberServiceの中でmessageServiceが使えるようにDIする
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) { } 
 
-  // メッセージを追加する
   getMembers(): Observable<Member[]> {
     this.messageService.add('MemberService: 社員一覧データを取得しました')
-    return of(MEMBERS)
+    return this.http.get<Member[]>(this.membersUrl)
   }
 
-  // 社員データを取得する
   getMember(id: number): Observable<Member | any> {
     this.messageService.add(`MemberService: 社員データ(id=${id})を取得しました`)
     return of(MEMBERS.find(member => member.id === id))
+  }
+
+  private log(message: string) {
+    this.messageService.add(`MemberService: ${message}`)
   }
 }
