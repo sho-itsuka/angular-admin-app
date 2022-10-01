@@ -4,7 +4,7 @@ import { MemberSearchComponent } from './member-search.component';
 
 describe('MemberSearchComponent', () => {
   let component: MemberSearchComponent;
-  let fixture: ComponentFixture<MemberSearchComponent>;
+  let fixture:   ComponentFixture<MemberSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('MemberSearchComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MemberSearchComponent);
+    fixture   = TestBed.createComponent(MemberSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
