@@ -32,5 +32,4 @@ export class MembersComponent implements OnInit {
         this.members.push(member)
       })
   }
-
 }
