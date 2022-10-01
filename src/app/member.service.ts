@@ -34,7 +34,7 @@ export class MemberService {
     const url = `${this.membersUrl}/${id}`
     return this.http.get<Member>(url)
       .pipe(
-        tap(_ => this.log(`社員データ(id=${id}を取得しました`)),
+        tap(_ => this.log(`社員データ(id=${id})を取得しました`)),
         catchError(this.handleError<Member>(`getMember id=${id}`))
       )
   }
@@ -42,8 +42,16 @@ export class MemberService {
   updateMember(member: Member): Observable<any> {
     return this.http.put(this.membersUrl, member, this.httpOptions)
       .pipe(
-        tap(_ => this.log(`社員データ(id=${member.id}を変更しました`)),
+        tap(_ => this.log(`社員データ(id=${member.id})を変更しました`)),
         catchError(this.handleError<any>('updateMember'))
+      )
+  }
+
+  addMember(member: Member): Observable<any> {
+    return this.http.post<Member>(this.membersUrl, member, this.httpOptions)
+      .pipe(
+        tap((newMember: Member) => this.log(`社員データ(id=${newMember.id})を追加しました`)),
+        catchError(this.handleError<Member>('addMember'))
       )
   }
 
