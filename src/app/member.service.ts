@@ -1,7 +1,7 @@
 import { Injectable }     from '@angular/core';
 import { HttpClient }     from '@angular/common/http';
 
-import { Observable, of }       from 'rxjs';
+import { Observable, of, pipe }       from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Member }         from './member';
@@ -29,7 +29,12 @@ export class MemberService {
 
   getMember(id: number): Observable<Member | any> {
     this.messageService.add(`MemberService: 社員データ(id=${id})を取得しました`)
-    return of(MEMBERS.find(member => member.id === id))
+    const url = `${this.membersUrl}/${id}`
+    return this.http.get<Member>(url)
+      pipe(
+        tap(),
+        catchError()
+      )
   }
 
   private log(message: string) {
