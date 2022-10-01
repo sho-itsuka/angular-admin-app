@@ -24,4 +24,13 @@ export class MembersComponent implements OnInit {
       .subscribe(members => this.members = members)
   }
 
+  add(name: string): void {
+    name = name.trim()
+    if (!name) { return }
+    this.memberService.addMember({ name } as Member)
+      .subscribe((member: Member) => {
+        this.members.push(member)
+      })
+  }
+
 }
