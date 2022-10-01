@@ -28,12 +28,11 @@ export class MemberService {
   }
 
   getMember(id: number): Observable<Member | any> {
-    this.messageService.add(`MemberService: 社員データ(id=${id})を取得しました`)
     const url = `${this.membersUrl}/${id}`
     return this.http.get<Member>(url)
-      pipe(
-        tap(),
-        catchError()
+      .pipe(
+        tap(_ => this.log('社員データ(id=${id}を取得しました')),
+        catchError(this.handleError<Member>(`getMember id=${id}`))
       )
   }
 
