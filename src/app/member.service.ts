@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Member }         from './member';
 import { MEMBERS }        from './mock-members';
 import { MessageService } from './message.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,17 @@ export class MemberService {
       .pipe(
         tap(_ => this.log(`社員データ(id=${id})を削除しました`)),
         catchError(this.handleError<Member>('deleteMember'))
+      )
+  }
+
+  searchMembers(term: string): Observable<Member[]> {
+    if (!term.trim()) {
+      return of([])
+    }
+    return this.http.get<Member[]>(`${this.membersUrl}/?name=${term}`)
+      .pipe(
+        tap(_ => this.log(`${term}にマッチする社員データが見つかりました`)),
+        catchError(this.handleError<Member[]>('searchMember', []))
       )
   }
 
