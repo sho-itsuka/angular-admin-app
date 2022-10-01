@@ -1,7 +1,7 @@
-import { Injectable }     from '@angular/core';
-import { HttpClient, HttpHeaders }     from '@angular/common/http';
+import { Injectable }              from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of, pipe }       from 'rxjs';
+import { Observable, of, pipe}  from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Member }         from './member';
@@ -18,7 +18,7 @@ export class MemberService {
   }
 
   constructor(
-    private http: HttpClient,
+    private http:           HttpClient,
     private messageService: MessageService
   ) { } 
 
